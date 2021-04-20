@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$/client" libraries="{pern-table/client/node_modules}" />
+    <file url="file://$PROJECT_DIR$/server" libraries="{pern-table/server/node_modules}" />
+    <file url="PROJECT" libraries="{pern-table/client/node_modules, pern-table/server/node_modules, prettier}" />
+    <includedPredefinedLibrary name="HTTP Response Handler" />
+  </component>
+</project>
