@@ -1,12 +1,12 @@
 const { Client: Pool } = require("pg");
 const connectionString = process.env.DATABASE_URL;
-
 const pool = new Pool({ connectionString });
 
-try {
-  pool.connect();
-  pool.query(
-    `${"create table pern_table (" + "id INT,"}name VARCHAR(50),
+(async () => {
+  try {
+    pool.connect();
+    await pool.query(
+      `${"create table pern_table (" + "id INT,"}name VARCHAR(50),
 date DATE,
 distance INT,
 quantity INT
@@ -106,9 +106,11 @@ insert into pern_table (id, name, date, distance, quantity) values (92, 'Shannen
 insert into pern_table (id, name, date, distance, quantity) values (93, 'Ward', '3/31/2020', 2030, 40);
 insert into pern_table (id, name, date, distance, quantity) values (94, 'Elyssa', '12/30/2004', 4192, 42);
 `
-  );
-} catch (e) {
-  console.log(e);
-}
+    );
+    console.log("DONE");
+  } catch (e) {
+    console.log(e);
+  }
+})();
 
 module.exports = pool;
