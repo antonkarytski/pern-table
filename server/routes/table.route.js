@@ -8,3 +8,5 @@ router.get("/allrecords", async (req, res) => {
   );
   res.json(allRecords.rows);
 });
+
+module.exports = router;
