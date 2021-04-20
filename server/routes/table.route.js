@@ -6,6 +6,7 @@ router.get("/allrecords", async (req, res) => {
   const allRecords = await pool.query(
     'SELECT * FROM "public"."pern_table" LIMIT 100'
   );
+  console.log(allRecords.rows);
   res.json(allRecords.rows);
 });
 
