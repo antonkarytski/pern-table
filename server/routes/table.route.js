@@ -1,20 +1,10 @@
-const {Router} = require('express')
-const router = Router()
+const { Router } = require("express");
+const router = Router();
+const pool = require("../db");
 
-//add record
-router.post("/record", async(req,res) => {
-
-})
-//delete record
-router.delete("/record", async(req,res) => {
-
-})
-//get all records
-router.get("/allrecords", async(req,res) => {
-
-})
-
-//get amount of records
-router.get("/somerecords", async(req,res) => {
-
-})
+router.get("/allrecords", async (req, res) => {
+  const allRecords = await pool.query(
+    'SELECT * FROM "public"."pern_table" LIMIT 100'
+  );
+  res.json(allRecords.rows);
+});
