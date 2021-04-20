@@ -3,16 +3,12 @@ const router = Router();
 const pool = require("../db");
 
 router.get("/allrecords", async (req, res) => {
-  console.log("start");
-  try{
+  try {
     const allRecords = await pool.query(
-      'SELECT * FROM "public"."pern_table" LIMIT 100'
+      'SELECT * FROM "public"."pern_table" LIMIT 1000'
     );
-    console.log(allRecords.rows);
     res.json(allRecords.rows);
-  } catch (e) {
-    console.log(e)
-  }
+  } catch (e) {}
 });
 
 module.exports = router;
