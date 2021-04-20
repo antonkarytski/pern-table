@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/pern-table/static/css/main.fc0afb97.chunk.css",
+    "main.js": "/pern-table/static/js/main.ca0fe8ff.chunk.js",
+    "main.js.map": "/pern-table/static/js/main.ca0fe8ff.chunk.js.map",
+    "runtime-main.js": "/pern-table/static/js/runtime-main.91bb51f0.js",
+    "runtime-main.js.map": "/pern-table/static/js/runtime-main.91bb51f0.js.map",
+    "static/js/2.46dfb694.chunk.js": "/pern-table/static/js/2.46dfb694.chunk.js",
+    "static/js/2.46dfb694.chunk.js.map": "/pern-table/static/js/2.46dfb694.chunk.js.map",
+    "index.html": "/pern-table/index.html",
+    "static/css/main.fc0afb97.chunk.css.map": "/pern-table/static/css/main.fc0afb97.chunk.css.map",
+    "static/js/2.46dfb694.chunk.js.LICENSE.txt": "/pern-table/static/js/2.46dfb694.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.91bb51f0.js",
+    "static/js/2.46dfb694.chunk.js",
+    "static/css/main.fc0afb97.chunk.css",
+    "static/js/main.ca0fe8ff.chunk.js"
+  ]
+}
