@@ -7,7 +7,7 @@ type ComparisonMethodsList = {
   [key: string]: ComparisonMethod;
 };
 
-export const comparisonMethodsList: ComparisonMethodsList = {
+export const COMPARISON_METHODS_LIST: ComparisonMethodsList = {
   equal: (controlValue, sourceValue) => controlValue === sourceValue,
   contain: (controlValue, sourceValue) => {
     const normalizedControlValue = ("" + controlValue).toLowerCase();

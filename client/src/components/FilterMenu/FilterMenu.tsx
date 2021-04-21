@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import Select from "../Input/Select";
-import { comparisonMethodsList } from "../../comparsionMethods";
+import { COMPARISON_METHODS_LIST } from "../../settings/comparisonMethods";
 import Input from "../Input/Input";
 import { SchemaField } from "../../types";
 
@@ -23,7 +23,7 @@ export default function FilterMenu({
 }: FilterMenuProps) {
   const [form, setForm] = useState({
     field: fields[0],
-    comparisonMethodName: Object.keys(comparisonMethodsList)[0],
+    comparisonMethodName: Object.keys(COMPARISON_METHODS_LIST)[0],
     controlValue: "",
   });
 
@@ -31,7 +31,6 @@ export default function FilterMenu({
     currentTarget,
   }: SyntheticEvent<HTMLSelectElement | HTMLInputElement>) {
     const { value, name } = currentTarget;
-    console.log(value, name);
     setForm({ ...form, [name]: value });
   }
 
@@ -51,7 +50,7 @@ export default function FilterMenu({
       />
       <Select
         label={"Filter method: "}
-        options={Object.keys(comparisonMethodsList)}
+        options={Object.keys(COMPARISON_METHODS_LIST)}
         onChange={formUpdateHandler}
         name={"comparisonMethodName"}
         value={form.comparisonMethodName}

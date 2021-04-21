@@ -16,8 +16,8 @@ interface ButtonSetProps {
 export default function ButtonsSet({
   buttonsCount,
   onClick,
-  className,
   activeIndex,
+  className,
   classes,
 }: ButtonSetProps) {
   return (
@@ -37,6 +37,17 @@ export default function ButtonsSet({
               onClick={() => onClick(index)}
               label={index + 1}
             />
+          );
+        })
+        .filter((el, index) => {
+          return (
+            index === 0 ||
+            (activeIndex < 4 && index < 6) ||
+            (activeIndex > buttonsCount - 5 && index > buttonsCount - 7) ||
+            index === buttonsCount - 1 ||
+            index === activeIndex ||
+            (index < activeIndex && index >= activeIndex - 2) ||
+            (index > activeIndex && index <= activeIndex + 2)
           );
         })}
     </div>

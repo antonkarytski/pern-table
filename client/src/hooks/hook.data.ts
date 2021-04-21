@@ -1,17 +1,45 @@
-import { useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { TableSchema } from "../types";
+import { REQUEST_HEAD, SERVER } from "../settings/server";
+import { getDateFromFullDate } from "../helpers/helpers";
 
-export function useDate() {
-  const server =
-  const request = {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  };
+export function useDataRequest() {
+  const [data, setData] = useState([]);
+  const [onLoading, setOnLoading] = useState(false);
+  const [onError, setOnError] = useState(false);
 
-  fetch(`${SERVER}/words?page=${page}&group=${group}`)
+  const getData = useCallback(async () => {
+    setOnError(false);
+    setOnLoading(true);
+    const rawResponse = await fetch(
+      `${SERVER}/api/data/allrecords`,
+      REQUEST_HEAD
+    );
+    if (rawResponse.ok) {
+      const response = await rawResponse.json();
+      setData(response);
+    } else {
+      setOnError(true);
+    }
+    setOnLoading(false);
+  }, []);
+
+  return { data, getData, onLoading, onError };
+}
+
+export function useServerData() {
+  const { getData, data: rawData, onLoading, onError } = useDataRequest();
+  const data = useMemo(() => {
+    return rawData.map(({ date, ...restProps }: TableSchema) => {
+      return { ...restProps, date: getDateFromFullDate(date) };
+    });
+  }, [rawData]);
+
+  useEffect(() => {
+    getData();
+  }, [getData]);
+
+  return { data, onLoading, onError };
 }
 
 export function useSlice(

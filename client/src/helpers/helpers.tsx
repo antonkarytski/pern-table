@@ -10,3 +10,7 @@ export function filterKeys(
     (fieldName) => !exceptedFields.includes(fieldName)
   );
 }
+
+export function getDateFromFullDate(fullDate: string): string {
+  return fullDate.slice(0, 10);
+}

@@ -1,53 +1,76 @@
 $dark: #424242;
 
-.TableWrap{
+.TableWrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  .TableContainer{
+  .TableContainer {
     overflow-y: scroll;
-    height: 78vh
+    height: 80vh;
+    background-color: $dark;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.2),
+      0 4px 4px rgba(0, 0, 0, 0.2), 0 6px 8px rgba(0, 0, 0, 0.2),
+      0 8px 16px rgba(0, 0, 0, 0.2);
   }
 
-  .Pagination{
-
+  .Pagination {
     max-width: 600px;
-    margin-bottom: 30px;
-    padding: 20px;
+    margin-top: 30px;
     box-sizing: border-box;
-    height: 15vh;
-    overflow-y: scroll;
 
-    .PaginationButton{
+    .PaginationButton {
       background-color: $dark;
-      margin-right: 10px;
       margin-bottom: 10px;
       width: 35px;
       height: 35px;
       color: white;
-      border-radius: 50%;
-      &.Active{
+      transition: background-color .3s;
+
+      &:nth-last-child(2) {
+        border-bottom-right-radius: 50%;
+        border-top-right-radius: 50%;
+      }
+      &:nth-child(2) {
+        border-bottom-left-radius: 50%;
+        border-top-left-radius: 50%;
+      }
+
+      &:first-child,
+      &:last-child {
+        border-radius: 50%;
+      }
+      &:first-child {
+        margin-right: 10px;
+      }
+      &:last-child {
+        margin-left: 10px;
+        &.Active {
+          border-radius: 0;
+          background-color: #b44242;
+        }
+      }
+
+      &.Active {
         background-color: #b44242;
       }
     }
-
   }
 }
 
-
-
 .Table {
   border-spacing: 0;
-  background-color: $dark;
+
   color: white;
-  border-radius: 10px;
+
   padding: 20px;
   min-height: 600px;
   min-width: 600px;
   height: 600px;
 
-  thead{
-    tr{
+  thead {
+    tr {
       color: white;
       th {
         font-size: 1.1em;
@@ -62,16 +85,12 @@ $dark: #424242;
   }
 
   td {
-
     border-collapse: collapse;
     min-width: 100px;
 
     padding: 15px;
-    &:not(:first-child){
+    &:not(:first-child) {
       text-align: right;
     }
   }
 }
-
-
-

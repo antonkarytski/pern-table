@@ -1,17 +1,16 @@
 import React from "react";
-import tableData from "./MOCK_DATA.json";
 import classes from "./Styles.module.scss";
 import FilteredTable from "./components/Table/FilteredTable/FilteredTable";
-
-//requests to get fields from database
-//refactor
-//final styles
+import { useServerData } from "./hooks/hook.data";
 
 function App() {
+  const { data, onLoading } = useServerData();
+
   return (
     <div className={classes.Main}>
       <FilteredTable
-        data={tableData}
+        onLoading={onLoading}
+        data={data}
         filterSettings={{ exceptedFields: ["id", "date"] }}
         renderSettings={{
           exceptedFields: ["id"],

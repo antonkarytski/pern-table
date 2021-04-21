@@ -15,6 +15,7 @@ export default function FilteredTable({
   filterSettings: { exceptedFields },
   renderSettings,
   data,
+  onLoading,
 }: FilteredTableProps) {
   const { filteredData, filterData } = useFilter(data);
   const filteredFields = useHeadFilter(data, exceptedFields) as SchemaField[];
@@ -26,7 +27,11 @@ export default function FilteredTable({
         fields={filteredFields}
         onFilter={filterData}
       />
-      <Table data={filteredData} renderSettings={renderSettings} />
+      <Table
+        data={filteredData}
+        renderSettings={renderSettings}
+        onLoading={onLoading}
+      />
     </div>
   );
 }

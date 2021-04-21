@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { filterKeys } from "../helpers/helpers";
 import { SchemaField, TableSchema } from "../types";
 import { OnFilter } from "../components/FilterMenu/FilterMenu";
-import { comparisonMethodsList } from "../comparsionMethods";
+import { COMPARISON_METHODS_LIST } from "../settings/comparisonMethods";
 
 export function useHeadFilter(
   data: TableSchema[],
@@ -32,7 +32,7 @@ export function useFilter(initialData: TableSchema[]) {
         setFilteredData(initialData);
         return;
       }
-      const comparisonMethod = comparisonMethodsList[methodName];
+      const comparisonMethod = COMPARISON_METHODS_LIST[methodName];
 
       setFilteredData(
         initialData.filter((tableRecord: TableSchema) => {

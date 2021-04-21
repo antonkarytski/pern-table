@@ -1,7 +1,7 @@
 .FilteredTable{
   display: flex;
   align-items: flex-start;
-  min-height: 100vh;
+  min-height: 100%;
 
   .Menu {
     background-color: #424242;
@@ -13,6 +13,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.2),
+    0 4px 4px rgba(0, 0, 0, 0.2), 0 6px 8px rgba(0, 0, 0, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.2);
+
     >div{
       &:not(:last-child){
         margin-bottom: 20px;

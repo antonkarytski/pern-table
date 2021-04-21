@@ -12,6 +12,7 @@ export interface TableProps {
     recordsPerPage: number;
     usePagination: boolean;
   };
+  onLoading: boolean;
 }
 
 export default function Table({
@@ -21,6 +22,7 @@ export default function Table({
     recordsPerPage,
     usePagination: isUsePagination,
   },
+  onLoading,
 }: TableProps) {
   const [page, setPage] = useState(0);
   const wordsToRender = useSlice(
@@ -46,25 +48,27 @@ export default function Table({
             </tr>
           </thead>
           <tbody>
-            {wordsToRender[page]?.map((tableRecord, index) => {
-              return (
-                <tr key={"row" + tableRecord.id + index}>
-                  {head.map((headName) => {
-                    return (
-                      <td key={`${tableRecord.id}${headName}${index}`}>
-                        {tableRecord[headName as SchemaField]}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
+            {onLoading
+              ? "Загрузка..."
+              : wordsToRender[page]?.map((tableRecord, index) => {
+                  return (
+                    <tr key={"row" + tableRecord.id + index}>
+                      {head.map((headName) => {
+                        return (
+                          <td key={`${tableRecord.id}${headName}${index}`}>
+                            {tableRecord[headName as SchemaField]}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
           </tbody>
         </table>
       </div>
       {isUsePagination ? (
         <ButtonsSet
-          buttonsCount={wordsToRender.length}
+          buttonsCount={wordsToRender.length || 1}
           onClick={(index) => setPage(index)}
           className={classes.Pagination}
           activeIndex={page}
